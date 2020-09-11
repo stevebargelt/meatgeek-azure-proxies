@@ -39,6 +39,6 @@ steps:
       resourceGroupName: "MeatGeek-Proxy"
       location: "West US 2"
       templateLocation: "Linked artifact"
-      csmFile: "$(System.DefaultWorkingDirectory)/proxy/deploy/template.json"
+      csmFile: "$(System.DefaultWorkingDirectory)/deploy/template.json"
       overrideParameters: "-uniqueResourceNameSuffix $(UniqueResourceNameSuffix) -sessionsMicroserviceApiAppName {sessions-api-function-app-name}"
       deploymentMode: "Incremental"
