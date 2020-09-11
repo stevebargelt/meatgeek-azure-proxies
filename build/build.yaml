@@ -40,7 +40,7 @@ steps:
       location: "West US 2"
       templateLocation: "Linked artifact"
       csmFile: "$(System.DefaultWorkingDirectory)/deploy/template.json"
-      overrideParameters: "-uniqueResourceNameSuffix $(UniqueResourceNameSuffix) -sessionsMicroserviceApiAppName {sessions-api-function-app-name}"
+      overrideParameters: "-uniqueResourceNameSuffix $(UniqueResourceNameSuffix) -sessionsMicroserviceApiAppName MeatGeek-Sessions"
       deploymentMode: "Incremental"
 
   - task: AzureRmWebAppDeployment@4
