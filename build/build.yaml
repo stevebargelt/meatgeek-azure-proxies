@@ -6,7 +6,7 @@ steps:
   - task: ArchiveFiles@2
     displayName: Zip Proxy Configuration
     inputs:
-      rootFolderOrFile: Proxy/proxies
+      rootFolderOrFile: proxies
       includeRootFolder: false
       archiveFile: $(Build.ArtifactStagingDirectory)/proxies.zip
 
@@ -22,6 +22,6 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: Publish Deployment Scripts
     inputs:
-      PathtoPublish: Proxy/deploy
+      PathtoPublish: deploy
       ArtifactName: deploy
       publishLocation: Container
