@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "sessions": {
+      "matchCondition": {
+        "methods": ["GET", "POST"],
+        "route": "/sessions"
+      },
+      "backendUri": "https://%SessionsMicroserviceApiAppName%.azurewebsites.net/api/sessions"
+    },
+    "sessionsSingle": {
+      "matchCondition": {
+        "methods": ["GET", "PATCH", "DELETE"],
+        "route": "/sessions/{sessionId}"
+      },
+      "backendUri": "https://%SessionsMicroserviceApiAppName%.azurewebsites.net/api/sessions/{sessionId}"
+    }
+  }
+}
