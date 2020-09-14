@@ -12,9 +12,9 @@
     }
   },
   "variables": {
-    "resourceNamePrefix": "meatgeek",
+    "resourceNamePrefix": "mg",
     "functionsAppServicePlanName": "[concat(variables('resourceNamePrefix'), 'fnasp', parameters('uniqueResourceNameSuffix'))]",
-    "functionsApiProxyAppName": "meatgeek"
+    "functionsApiProxyAppName": "meatgeek-proxy"
   },
   "resources": [
     {
