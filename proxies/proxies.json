@@ -14,6 +14,41 @@
         "route": "/sessions/{sessionId}"
       },
       "backendUri": "https://%SessionsMicroserviceApiAppName%.azurewebsites.net/api/sessions/{sessionId}"
+    },
+    "device": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/device"
+      },
+      "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/status"
+    },
+    "deviceStatus": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/device/status"
+      },
+      "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/status"
+    },
+    "deviceTemps": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/device/temps"
+      },
+      "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/temps"
+    },
+    "deviceMode": {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/device/mode"
+      },
+      "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/mode"
+    },
+    "deviceSetPoint": {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/device/mode"
+      },
+      "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/setpoint"
     }
   }
 }

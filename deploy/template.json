@@ -1,18 +1,15 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
-    "sessionsMicroserviceApiAppName": {
-      "type": "string"
-    }
-  },
+  "parameters": {},
   "variables": {
-    "functionsAppServicePlanName": "meatgeeksessionsapi",
-    "functionsApiProxyAppName": "meatgeek-proxy"
+    "SessionApiName": "meatgeeksessionsapi",
+    "DeviceApiName": "meatgeek-deviceapi",
+    "ProxyAppName": "meatgeek-proxy"
   },
   "resources": [
     {
-      "name": "[variables('functionsAppServicePlanName')]",
+      "name": "[variables('ProxyAppName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-09-01",
@@ -35,14 +32,14 @@
       }
     },
     {
-      "name": "[variables('functionsApiProxyAppName')]",
+      "name": "[variables('ProxyAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "2018-11-01",
       "kind": "functionapp",
       "properties": {
         "enabled": true,
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionsAppServicePlanName'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('ProxyAppName'))]",
         "reserved": false
       },
       "resources": [
@@ -52,22 +49,23 @@
           "apiVersion": "2016-08-01",
           "properties": {
             "ROUTING_EXTENSION_VERSION": "~0.2",
-            "SessionsMicroserviceApiAppName": "[parameters('sessionsMicroserviceApiAppName')]"
+            "SessionsMicroserviceApiAppName": "[variables('SessionApiName')]",
+            "DeviceMicroserviceApiAppName": "[variables('DeviceApiName')]"
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('functionsApiProxyAppName'))]"
+            "[resourceId('Microsoft.Web/sites', variables('ProxyAppName'))]"
           ]
         }
       ],
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('functionsAppServicePlanName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('ProxyAppName'))]"
       ]
     }
   ],
   "outputs": {
     "functionsApiProxyHostName": {
       "type": "string",
-      "value": "[reference(variables('functionsApiProxyAppName')).hostNames[0]]"
+      "value": "[reference(variables('ProxyAppName')).hostNames[0]]"
     }
   }
 }
