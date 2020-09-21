@@ -5,11 +5,12 @@
   "variables": {
     "SessionApiName": "meatgeeksessionsapi",
     "DeviceApiName": "meatgeek-deviceapi",
-    "ProxyAppName": "meatgeek-proxy"
+    "functionsApiAppName": "meatgeek-proxy",
+    "functionsAppServicePlanName": "meatgeek-proxy-app-service-plan"
   },
   "resources": [
     {
-      "name": "[variables('ProxyAppName')]",
+      "name": "[variables('functionsAppServicePlanName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-09-01",
@@ -32,14 +33,14 @@
       }
     },
     {
-      "name": "[variables('ProxyAppName')]",
+      "name": "[variables('functionsApiAppName')]",
       "type": "Microsoft.Web/sites",
       "location": "[resourceGroup().location]",
       "apiVersion": "2018-11-01",
       "kind": "functionapp",
       "properties": {
         "enabled": true,
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('ProxyAppName'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionsAppServicePlanName'))]",
         "reserved": false
       },
       "resources": [
@@ -53,19 +54,19 @@
             "DeviceMicroserviceApiAppName": "[variables('DeviceApiName')]"
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('ProxyAppName'))]"
+            "[resourceId('Microsoft.Web/sites', variables('functionsApiAppName'))]"
           ]
         }
       ],
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('ProxyAppName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('functionsAppServicePlanName'))]"
       ]
     }
   ],
   "outputs": {
     "functionsApiProxyHostName": {
       "type": "string",
-      "value": "[reference(variables('ProxyAppName')).hostNames[0]]"
+      "value": "[reference(variables('functionsApiAppName')).hostNames[0]]"
     }
   }
 }
