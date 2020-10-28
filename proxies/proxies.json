@@ -45,7 +45,7 @@
     },
     "deviceSetPoint": {
       "matchCondition": {
-        "methods": ["POST"],
+        "methods": ["GET", "POST"],
         "route": "/device/setpoint"
       },
       "backendUri": "https://%DeviceMicroserviceApiAppName%.azurewebsites.net/api/setpoint"
