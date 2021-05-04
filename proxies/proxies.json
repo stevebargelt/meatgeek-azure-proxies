@@ -15,6 +15,13 @@
       },
       "backendUri": "https://%SessionsMicroserviceApiAppName%.azurewebsites.net/api/sessions/{sessionId}"
     },
+    "sessionsSwagger": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/swagger/ui"
+      },
+      "backendUri": "https://%SessionsMicroserviceApiAppName%.azurewebsites.net/api/swagger/ui"
+    },
     "device": {
       "matchCondition": {
         "methods": ["GET"],
