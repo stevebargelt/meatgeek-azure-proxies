@@ -4,6 +4,7 @@
   "parameters": {},
   "variables": {
     "SessionApiName": "meatgeeksessionsapi",
+    "IotApiName": "meetgeekiotapi",
     "DeviceApiName": "meatgeek-deviceapi",
     "functionsApiAppName": "meatgeek-proxy",
     "functionsAppServicePlanName": "meatgeek-proxy-app-service-plan"
@@ -51,6 +52,7 @@
           "properties": {
             "ROUTING_EXTENSION_VERSION": "~0.2",
             "SessionsMicroserviceApiAppName": "[variables('SessionApiName')]",
+            "IotMicroserviceApiAppName": "[variables('IotApiName')]",
             "DeviceMicroserviceApiAppName": "[variables('DeviceApiName')]"
           },
           "dependsOn": [
