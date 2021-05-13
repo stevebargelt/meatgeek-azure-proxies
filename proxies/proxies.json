@@ -74,7 +74,7 @@
     "iotGetChart": {
       "matchCondition": {
         "methods": ["GET"],
-        "route": "/iot/chart"
+        "route": "/iot/chart/{starttime}/{timeseries}/{endtime}"
       },
       "backendUri": "https://%IotMicroserviceApiAppName%.azurewebsites.net/api/chart"
     }
